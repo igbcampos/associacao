@@ -4,30 +4,38 @@ ValorInvalido quando algo nao for preenchido corretamente, que eu nao sei como f
 */
 package associacao;
 
-import java.util.Date;
-
 public class ControleAssociacao implements InterfaceAssociacao {
 
 	private ArrayListDeAssociacoes associacoes;
-	private ArrayListDeTaxas taxas;
+	//private ArrayListDeTaxas taxas;
 	
 	//eu acho que nao precisaria da excecao reuniaoNaoExistente
-	public double calcularFrequencia(int codigoAssociado, int numAssociacao, Date inicio, Date fim)
+	public double calcularFrequencia(int codigoAssociado, int numAssociacao, long inicio, long fim)
 			throws AssociadoNaoExistente, ReuniaoNaoExistente, AssociacaoNaoExistente {
 		Associacao associacao = associacoes.buscar(numAssociacao);
 		
 		return associacao.calcularFrequencia(codigoAssociado, inicio, fim);
 	}
 
-	public void registrarPagamento(int numAssociacao, String taxa, int vigencia, int numAssociado, Date data,
-			double valor) throws AssociacaoNaoExistente, AssociadoNaoExistente, TaxaNaoExistente, ValorIncorreto {
+	public void registrarFrequencia(int codigoAssociado, int numAssociacao, long dataReuniao)
+			throws AssociadoNaoExistente, ReuniaoNaoExistente, AssociacaoNaoExistente, FrequenciaJaRegistrada,
+			FrequenciaIncompativel {
+		Associacao associacao = associacoes.buscar(numAssociacao);
+		
+		associacao.registrarFrequencia(codigoAssociado, dataReuniao);
+	}
+
+	public void registrarPagamento(int numAssociacao, String taxa, int vigencia, int numAssociado, long data,
+			double valor)
+			throws AssociacaoNaoExistente, AssociadoNaoExistente, AssociadoJaRemido, TaxaNaoExistente, ValorInvalido {
 		Associacao associacao = associacoes.buscar(numAssociacao);
 		
 		associacao.registrarPagamento(taxa, vigencia, numAssociado, data, valor);
+		
 	}
 
 	public double somarPagamentoDeAssociado(int numAssociacao, int numAssociado, String nomeTaxa, int vigencia,
-			Date inicio, Date fim) throws AssociacaoNaoExistente, AssociadoNaoExistente, TaxaNaoExistente {
+			long inicio, long fim) throws AssociacaoNaoExistente, AssociadoNaoExistente, TaxaNaoExistente {
 		Associacao associacao = associacoes.buscar(numAssociacao);
 		
 		return associacao.somarPagamentoDeAssociado(numAssociado, nomeTaxa, vigencia, inicio, fim);
@@ -41,10 +49,10 @@ public class ControleAssociacao implements InterfaceAssociacao {
 			throws AssociacaoNaoExistente, TaxaNaoExistente {
 		Associacao associacao = associacoes.buscar(numAssociacao);
 		
-		return taxas.calcularTotalDeTaxas(associacao.getNumero(), vigencia);
+		return associacao.calcularTotalDeTaxas(associacao.getNumero(), vigencia);
 	}
 
-	public void adicionar(Associacao assoc) throws AssociacaoJaExistente, ValorIncorreto {
+	public void adicionar(Associacao assoc) throws AssociacaoJaExistente, ValorInvalido {
 		try {
 			associacoes.buscar(assoc.getNumero());
 		}
@@ -53,37 +61,31 @@ public class ControleAssociacao implements InterfaceAssociacao {
 		}
 	}
 	
-	public void adicionar(Associacao assoc, Associado a) throws AssociacaoNaoExistente, AssociadoJaExistente {
-		Associacao associacao;
+	public void adicionar(int associacao, Associado a)
+			throws AssociacaoNaoExistente, AssociadoJaExistente, ValorInvalido {
+		Associacao associacaoAux;
 		
-		associacao = associacoes.buscar(assoc.getNumero());
+		associacaoAux = associacoes.buscar(associacao);
 		//assumindo que se a associacao nao existir vai dar uma excecao e o metodo para aqui, se isso nao ocorre o metodo continua
-		associacao.adicionar(a);
+		associacaoAux.adicionar(a);
 	}
 
-	public void adicionar(Associacao assoc, Reuniao r) throws AssociacaoNaoExistente, ReuniaoJaExistente {
-		Associacao associacao;
+	public void adicionar(int associacao, Reuniao r) throws AssociacaoNaoExistente, ReuniaoJaExistente, ValorInvalido {
+		Associacao associacaoAux;
 		
-		associacao = associacoes.buscar(assoc.getNumero());
+		associacaoAux = associacoes.buscar(associacao);
 		//assumindo que se a associacao nao existir vai dar uma excecao e o metodo para aqui, se isso nao ocorre o metodo continua
-		associacao.adicionar(r);
+		associacaoAux.adicionar(r);
 	}
 
 	/*nao esta, em tese, permitindo inserir uma taxa com mesmo nome mas vigencia
 	diferente, mas parece que pode haver taxa com mesmo nome e vigencias diferentes */
-	public void adicionar(Associacao assoc, Taxa t) throws AssociacaoNaoExistente, TaxaJaExistente {
-		Associacao associacao;
+	public void adicionar(int associacao, Taxa t) throws AssociacaoNaoExistente, TaxaJaExistente, ValorInvalido {
+		Associacao associacaoAux;
 		
-		associacao = associacoes.buscar(assoc.getNumero());
+		associacaoAux = associacoes.buscar(associacao);
 		//assumindo que se a associacao nao existir vai dar uma excecao e o metodo para aqui, se isso nao ocorre o metodo continua
-		try {
-			taxas.buscar(t.getNome());
-			throw new TaxaJaExistente();
-		}
-		catch(TaxaNaoExistente e) {
-			taxas.inserir(t);
-			associacao.adicionarTaxaNoExtratoDosAssociados(t);
-		}
+		associacaoAux.adicionar(t);
 	}
 	
 }

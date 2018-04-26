@@ -23,14 +23,14 @@ public class ExtratoDeTaxa extends Taxa {
 		return mTaxaQuitada;
 	}
 	
-	public void registrarPagamento(Date data, double valor) throws ValorIncorreto {
+	public void registrarPagamento(long data, double valor) throws ValorInvalido {
 		//verificar se a taxa nao esta quitada
 		if(mTaxaQuitada == false) {//basta usar !mTaxaQuitada, eu acho
 			if(valor < getValorDaParcela()) {
-				throw new ValorIncorreto("valor abaixo do valor da parcela da taxa");
+				throw new ValorInvalido("valor abaixo do valor da parcela da taxa");
 			}
 			else if(valor > getValorAno() - mValorTotalPagoPeloAssociado) {
-				throw new ValorIncorreto("valor ultrapassa o valor restante da taxa a ser paga");
+				throw new ValorInvalido("valor ultrapassa o valor restante da taxa a ser paga");
 			}
 			
 			//aqui só deve executar se o valor for >= já que não deve passar do throw no caso acima
@@ -52,12 +52,11 @@ public class ExtratoDeTaxa extends Taxa {
 		}
 	}
 	
-	public double somarPagamentoDeAssociado(Date inicio, Date fim) {
+	public double somarPagamentoDeAssociado(long inicio, long fim) {
 		double somaPagamento = 0;
 		
 		for(Pagamento pagamento : pagamentos) {
-			if((pagamento.getData().after(inicio) && pagamento.getData().before(fim)) || 
-					(pagamento.getData().equals(inicio) || pagamento.getData().equals(fim))) {
+			if(pagamento.getData() >= inicio && pagamento.getData() <= fim) {
 				somaPagamento += pagamento.getValor();
 			}
 		}

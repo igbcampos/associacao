@@ -1,7 +1,6 @@
 package associacao;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Associado {
 
@@ -37,7 +36,7 @@ public class Associado {
 		return mDataAssociacao;
 	}
 	
-	public double somarPagamentoDeAssociado(String nomeTaxa, int vigencia, Date inicio, Date fim) throws TaxaNaoExistente {
+	public double somarPagamentoDeAssociado(String nomeTaxa, int vigencia, long inicio, long fim) throws TaxaNaoExistente {
 		for(ExtratoDeTaxa taxa : extratoDeTaxas) {
 			if(taxa.getNome().equals(nomeTaxa) && taxa.getVigencia() == vigencia) {
 				return taxa.somarPagamentoDeAssociado(inicio, fim);
@@ -83,7 +82,7 @@ public class Associado {
 		extratoDeTaxas.add(new ExtratoDeTaxa(codigo, associacao, nome, vigencia, valorAno, parcelas, administrativa));
 	}
 	
-	public void registrarPagamento(String nomeTaxa, int vigencia, Date data, double valor) throws ValorIncorreto, TaxaNaoExistente {
+	public void registrarPagamento(String nomeTaxa, int vigencia, long data, double valor) throws ValorInvalido, TaxaNaoExistente {
 		for(ExtratoDeTaxa taxa : extratoDeTaxas) {
 			if(taxa.getNome().equals(nomeTaxa) && taxa.getVigencia() == vigencia) {
 				taxa.registrarPagamento(data, valor);
