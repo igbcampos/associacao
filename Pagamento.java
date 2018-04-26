@@ -1,13 +1,11 @@
 package associacao;
 
-import java.util.Date;
-
 public class Pagamento {
 
-	private Date mData;
+	private long mData;
 	private double mValor;
 	
-	public Date getData() {
+	public long getData() {
 		return mData;
 	}
 	
@@ -15,7 +13,7 @@ public class Pagamento {
 		return mValor;
 	}
 	
-	public void setData(Date data) {
+	public void setData(long data) {
 		mData = data;
 	}
 	
@@ -23,7 +21,7 @@ public class Pagamento {
 		mValor = valor;
 	}
 	
-	public Pagamento(Date data, double valor) {
+	public Pagamento(long data, double valor) {
 		mData = data;
 		mValor = valor;
 	}

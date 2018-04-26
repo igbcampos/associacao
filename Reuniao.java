@@ -28,8 +28,13 @@ public class Reuniao {
 		mData = data;
 	}
 	
-	public void adicionarFrequenciaAssociado(Associado associado) {
-		frequencia.add(associado);
+	public void adicionarFrequenciaAssociado(Associado associado) throws FrequenciaJaRegistrada {
+		if(!(associadoPresente(associado.getNumero()))) {
+			frequencia.add(associado);
+		}
+		else {
+			throw new FrequenciaJaRegistrada();
+		}
 	}
 	
 	public boolean associadoPresente(int numero) {

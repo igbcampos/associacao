@@ -24,7 +24,7 @@ public class ArrayListDeAssociados {
 	public void adicionarTaxaNoExtratoDosAssociados(Taxa taxa) {
 		for(Associado associado : associados) {
 			if(associado instanceof AssociadoRemido) {
-				if(!taxa.getAdministrativa()) {
+				if(!(taxa.getAdministrativa())) {
 					associado.inserirTaxaNoExtrato(taxa);
 				}
 			}

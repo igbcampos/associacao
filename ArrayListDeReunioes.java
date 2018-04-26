@@ -1,7 +1,6 @@
 package associacao;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ArrayListDeReunioes {
 
@@ -21,13 +20,19 @@ public class ArrayListDeReunioes {
 		throw new ReuniaoNaoExistente();
 	}
 	
-	public double calcularFrequencia(int numero, Date inicio, Date fim) {
+	public void adicionarFrequenciaAssociado(Associado associado, long dataReuniao) throws FrequenciaJaRegistrada, ReuniaoNaoExistente {
+		Reuniao reuniao = buscar(dataReuniao);
+		
+		reuniao.adicionarFrequenciaAssociado(associado);
+	}
+	
+	public double calcularFrequencia(int numero, long inicio, long fim) {
 		int presencas = 0, total = 0;
 		
 		for(Reuniao reuniao : reunioes) {
-			Date data = new Date(reuniao.getData()); //converte a data da reuniao para Date
+			long data = reuniao.getData();
 			
-			if((data.after(inicio) && data.before(fim)) || (data.equals(inicio) || data.equals(fim))) {
+			if(data >= inicio && data <= fim) {
 				if(reuniao.associadoPresente(numero)) {
 					presencas++;
 				}
