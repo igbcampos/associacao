@@ -2,7 +2,6 @@ package associacao;
 
 import static org.junit.Assert.*;
 
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -77,7 +76,7 @@ public class TesteAssociacao {
 		InterfaceAssociacao controle = new MinhaAssociacao();
 		Associacao a1 = new Associacao(1306, "Cruzeiro do Sul V");	
 		controle.adicionar(a1);
-		Taxa taxa1 = new Taxa("Manutenção", 2018, 600, 12, true);
+		Taxa taxa1 = new Taxa("Manutencao", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
 		try {
 			controle.adicionar(1306, taxa1);
@@ -105,7 +104,7 @@ public class TesteAssociacao {
 		controle.adicionar(1306, reuniao1);
 		controle.registrarFrequencia(1, 1306, data1);
 
-		Reuniao reuniao2 = new Reuniao(data1+1000000, "Confirmação de aumento");
+		Reuniao reuniao2 = new Reuniao(data1+1000000, "Confirmacao de aumento");
 		controle.adicionar(1306, reuniao2);
 		
 		double freq = controle.calcularFrequencia(1, 1306, data1, data1+1000000);
@@ -132,7 +131,7 @@ public class TesteAssociacao {
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
 		controle.adicionar(1306, associado2);
 
-		Taxa taxa1 = new Taxa("Manutenção", 2018, 600, 12, true);
+		Taxa taxa1 = new Taxa("Manutencao", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
 
 		Taxa taxa2 = new Taxa("Reforma", 2018, 1200, 12, false);
@@ -141,28 +140,28 @@ public class TesteAssociacao {
 		Date hoje = new Date();
 		
 		try {
-			controle.registrarPagamento(1306, "Manutenção", 2018, 1, hoje.getTime(), 49);
-			fail("Não deveria deixar pagar esse valor");
+			controle.registrarPagamento(1306, "Manutencao", 2018, 1, hoje.getTime(), 49);
+			fail("Nao deveria deixar pagar esse valor");
 		} catch (ValorInvalido e) {
 			// Ok. Barrou pagamento abaixo da parcela!
 		}
-		controle.registrarPagamento(1306, "Manutenção", 2018, 1, hoje.getTime(), 60);
+		controle.registrarPagamento(1306, "Manutencao", 2018, 1, hoje.getTime(), 60);
 		controle.registrarPagamento(1306, "Reforma", 2018, 1, hoje.getTime(), 100);
 		
-		double valor = controle.somarPagamentoDeAssociado(1306, 1, "Manutenção", 2018, hoje.getTime(), hoje.getTime());
+		double valor = controle.somarPagamentoDeAssociado(1306, 1, "Manutencao", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(60, valor, 0.01);
 		double valor2 = controle.somarPagamentoDeAssociado(1306, 1, "Reforma", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(100, valor2, 0.01);
 
 		try {
-			controle.registrarPagamento(1306, "Manutenção", 2018, 2, hoje.getTime(), 60);
-			fail("Não deveria deixar pagar esse valor");
+			controle.registrarPagamento(1306, "Manutencao", 2018, 2, hoje.getTime(), 60);
+			fail("Nao deveria deixar pagar esse valor");
 		} catch (AssociadoJaRemido e) {
 			// Ok. Barrou pagamento de taxa adminsitrativa!
 		}
 		
 		controle.registrarPagamento(1306, "Reforma", 2018, 2, hoje.getTime(), 100);
-		valor = controle.somarPagamentoDeAssociado(1306, 2, "Manutenção", 2018, hoje.getTime(), hoje.getTime());
+		valor = controle.somarPagamentoDeAssociado(1306, 2, "Manutencao", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(0, valor, 0.01);
 		valor2 = controle.somarPagamentoDeAssociado(1306, 2, "Reforma", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(100, valor2, 0.01);

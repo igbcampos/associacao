@@ -47,6 +47,11 @@ public class Reuniao {
 		return false;
 	}
 	
+	public Reuniao(long data, String ata) {
+		mAta = ata;
+		mData = data;
+	}
+	
 	//pode ser que precise dar um throw de associado nao encontrado, mas nao tenho certeza
 	//talvez um return null baste, ja que ele quer saber so usuaria estava presente, assim
 	//se o metodo retornar null significa que nao estava

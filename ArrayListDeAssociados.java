@@ -1,13 +1,32 @@
 package associacao;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ArrayListDeAssociados {
 
 	ArrayList<Associado> associados = new ArrayList<Associado>();
 	
-	public void inserir(Associado associado) {
+	public void validarDados(Associado associado) throws ValorInvalido {
+		if(associado.getNome() == "" || associado.getNome() == null) {
+			throw new ValorInvalido("nome de associado");
+		}
+		if(associado.getDataAssociacao() <= 0) {
+			throw new ValorInvalido("data de associacao");
+		}
+		if(associado.getNascimento() <= 0) {
+			throw new ValorInvalido("data de nascimento");
+		}
+		if(associado.getNumero() <= 0) {
+			throw new ValorInvalido("numero de associado");
+		}
+		if(associado.getTelefone() == "" || associado.getTelefone() == null) {
+			throw new ValorInvalido("telefone de associado");
+		}
+	}
+	
+	public void inserir(Associado associado) throws ValorInvalido {
+		validarDados(associado);
+		
 		associados.add(associado);
 	}
 	

@@ -2,18 +2,13 @@ package associacao;
 
 public class Taxa {
 
-	private int mCodigo;
 	private Associacao mAssociacao;
 	private String mNome;
 	private int mVigencia;
 	private double mValorAno;
 	private int mParcelas;
 	private boolean mAdministrativa;
-	
-	public int getCodigo() {
-		return mCodigo;
-	}
-	
+		
 	public Associacao getAssociacao() {
 		return mAssociacao;
 	}
@@ -42,10 +37,6 @@ public class Taxa {
 		return mValorAno / mParcelas;
 	}
 	
-	public void setCodigo(int codigo) {
-		mCodigo = codigo;
-	}
-	
 	public void setAssociacao(Associacao associacao) {
 		mAssociacao = associacao;
 	}
@@ -70,9 +61,7 @@ public class Taxa {
 		mAdministrativa = administrativa;
 	}
 	
-	public Taxa(int codigo, Associacao associacao, String nome, int vigencia, double valorAno, int parcelas, boolean administrativa) {
-		mCodigo = codigo;
-		mAssociacao = associacao;
+	public Taxa(String nome, int vigencia, double valorAno, int parcelas, boolean administrativa) {
 		mNome = nome;
 		mVigencia = vigencia;
 		mValorAno = valorAno;

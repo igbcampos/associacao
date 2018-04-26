@@ -4,9 +4,9 @@ public class Associacao {
 
 	private int mNumero;
 	private String mNome;
-	private ArrayListDeAssociados associados;
-	private ArrayListDeTaxas taxas;
-	private ArrayListDeReunioes reunioes;
+	private ArrayListDeAssociados associados = new ArrayListDeAssociados();
+	private ArrayListDeTaxas taxas = new ArrayListDeTaxas();
+	private ArrayListDeReunioes reunioes = new ArrayListDeReunioes();
 	
 	public int getNumero() {
 		return mNumero;
@@ -24,7 +24,7 @@ public class Associacao {
 		mNome = nome;
 	}
 	
-	public void adicionar(Associado associado) throws AssociadoJaExistente {
+	public void adicionar(Associado associado) throws AssociadoJaExistente, ValorInvalido {
 		try {
 			associados.buscar(associado.getNumero());
 			throw new AssociadoJaExistente();
@@ -34,7 +34,7 @@ public class Associacao {
 		}
 	}
 	
-	public void adicionar(Reuniao reuniao) throws ReuniaoJaExistente {
+	public void adicionar(Reuniao reuniao) throws ReuniaoJaExistente, ValorInvalido {
 		try {
 			reunioes.buscar(reuniao.getData());
 			throw new ReuniaoJaExistente();
@@ -44,12 +44,14 @@ public class Associacao {
 		}
 	}
 	
-	public void adicionar(Taxa taxa) throws TaxaJaExistente {
+	public void adicionar(Taxa taxa) throws TaxaJaExistente, ValorInvalido {
 		try {
-			taxas.buscar(taxa.getNome());
+			taxas.buscar(taxa.getNome(), taxa.getVigencia());
 			throw new TaxaJaExistente();
 		}
 		catch(TaxaNaoExistente e) {
+			taxa.setAssociacao(new Associacao(mNumero, mNome));
+			
 			taxas.inserir(taxa);
 			associados.adicionarTaxaNoExtratoDosAssociados(taxa);
 		}
