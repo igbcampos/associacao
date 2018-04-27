@@ -6,7 +6,18 @@ public class ArrayListDeReunioes {
 
 	ArrayList<Reuniao> reunioes = new ArrayList<Reuniao>();
 	
-	public void inserir(Reuniao reuniao) {
+	public void validarDados(Reuniao reuniao) throws ValorInvalido{
+		if(reuniao.getData() <= 0) {
+			throw new ValorInvalido("data da reuniao");
+		}
+		if(reuniao.getAta() == "" || reuniao.getAta() == null) {
+			throw new ValorInvalido("ata da reuniao");
+		}
+	}
+	
+	public void inserir(Reuniao reuniao) throws ValorInvalido {
+		validarDados(reuniao);
+		
 		reunioes.add(reuniao);
 	}
 	
@@ -41,7 +52,7 @@ public class ArrayListDeReunioes {
 			}
 		}
 		
-		return presencas / total;
+		return (double)presencas / total;
 	}
 	
 }

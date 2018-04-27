@@ -1,7 +1,5 @@
 package associacao;
 
-import java.util.Date;
-
 public interface InterfaceAssociacao {
 
 	// Calcula a frequência de um associado nas reuniões ocorridas durante um

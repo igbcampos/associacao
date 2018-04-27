@@ -6,7 +6,6 @@ public class Associado {
 
 	private int mNumero;
 	private String mNome;
-	private String mEndereco;
 	private String mTelefone;
 	private long mNascimento;
 	private long mDataAssociacao;
@@ -18,10 +17,6 @@ public class Associado {
 	
 	public String getNome() {
 		return mNome;
-	}
-	
-	public String getEndereco() {
-		return mEndereco;
 	}
 	
 	public String getTelefone() {
@@ -54,10 +49,6 @@ public class Associado {
 		mNome = nome;
 	}
 	
-	public void setEndereco(String endereco) {
-		mEndereco = endereco;
-	}
-	
 	public void setTelefone(String telefone) {
 		mTelefone = telefone;
 	}
@@ -71,7 +62,6 @@ public class Associado {
 	}
 	
 	public void inserirTaxaNoExtrato(Taxa taxa) {
-		int codigo = taxa.getCodigo();
 		Associacao associacao = taxa.getAssociacao();
 		String nome = taxa.getNome();
 		int vigencia = taxa.getVigencia();
@@ -79,13 +69,15 @@ public class Associado {
 		int parcelas = taxa.getParcelas();
 		boolean administrativa = taxa.getAdministrativa();
 		
-		extratoDeTaxas.add(new ExtratoDeTaxa(codigo, associacao, nome, vigencia, valorAno, parcelas, administrativa));
+		extratoDeTaxas.add(new ExtratoDeTaxa(nome, vigencia, valorAno, parcelas, administrativa, associacao));
 	}
 	
 	public void registrarPagamento(String nomeTaxa, int vigencia, long data, double valor) throws ValorInvalido, TaxaNaoExistente {
+		
 		for(ExtratoDeTaxa taxa : extratoDeTaxas) {
 			if(taxa.getNome().equals(nomeTaxa) && taxa.getVigencia() == vigencia) {
 				taxa.registrarPagamento(data, valor);
+				return;
 			}
 		}
 		

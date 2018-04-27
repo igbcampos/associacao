@@ -1,7 +1,6 @@
 package associacao;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ExtratoDeTaxa extends Taxa {
 
@@ -64,9 +63,8 @@ public class ExtratoDeTaxa extends Taxa {
 		return somaPagamento;
 	}
 	
-	public ExtratoDeTaxa(int codigo, Associacao associacao, String nome, int vigencia, double valorAno, int parcelas,
-			boolean administrativa) {
-		super(codigo, associacao, nome, vigencia, valorAno, parcelas, administrativa);
+	public ExtratoDeTaxa(String nome, int vigencia, double valorAno, int parcelas, boolean administrativa, Associacao associacao) {
+		super(nome, vigencia, valorAno, parcelas, administrativa);
 		
 		mValorTotalPagoPeloAssociado = 0;
 		mValorExcedenteDePagamentosAnteriores = 0;
