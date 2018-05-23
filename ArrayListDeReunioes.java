@@ -37,7 +37,7 @@ public class ArrayListDeReunioes {
 		reuniao.adicionarFrequenciaAssociado(associado);
 	}
 	
-	public double calcularFrequencia(int numero, long inicio, long fim) {
+	public double calcularFrequencia(int numero, long inicio, long fim) throws ReuniaoNaoExistente {
 		int presencas = 0, total = 0;
 		
 		for(Reuniao reuniao : reunioes) {
@@ -50,6 +50,10 @@ public class ArrayListDeReunioes {
 				
 				total++;
 			}
+		}
+		
+		if(total == 0) {
+			throw new ReuniaoNaoExistente();
 		}
 		
 		return (double)presencas / total;

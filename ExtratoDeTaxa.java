@@ -2,20 +2,19 @@ package associacao;
 
 import java.util.ArrayList;
 
-public class ExtratoDeTaxa extends Taxa {
-
-	ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
-	private double mValorTotalPagoPeloAssociado;
-	private double mValorExcedenteDePagamentosAnteriores;
-	private int mQuantidadeDeParcelasPagas;
-	private boolean mTaxaQuitada;
+public class ExtratoDeTaxa {
 	
-	public double getValorTotalPagoPeloAssociado() { // retorna todo o valor pago
-		return mValorTotalPagoPeloAssociado;
+	private Taxa mTaxa;
+	private double mValorJaPagoPeloAssociado;
+	private boolean mTaxaQuitada;
+	ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
+	
+	public Taxa getTaxa() {
+		return mTaxa;
 	}
 	
-	public double getValorExcedenteDePagamentosAnteriores() {
-		return mValorExcedenteDePagamentosAnteriores;
+	public double getValorJaPagoPeloAssociado() { // retorna todo o valor pago
+		return mValorJaPagoPeloAssociado;
 	}
 	
 	public boolean taxaEstaQuitada() {
@@ -23,31 +22,23 @@ public class ExtratoDeTaxa extends Taxa {
 	}
 	
 	public void registrarPagamento(long data, double valor) throws ValorInvalido {
-		//verificar se a taxa nao esta quitada
-		if(mTaxaQuitada == false) {//basta usar !mTaxaQuitada, eu acho
-			if(valor < getValorDaParcela()) {
-				throw new ValorInvalido("valor abaixo do valor da parcela da taxa");
-			}
-			else if(valor > getValorAno() - mValorTotalPagoPeloAssociado) {
-				throw new ValorInvalido("valor ultrapassa o valor restante da taxa a ser paga");
-			}
-			
-			//aqui só deve executar se o valor for >= já que não deve passar do throw no caso acima
-			pagamentos.add(new Pagamento(data, valor)); //adicionando um pagamento ao vetor
-			mValorTotalPagoPeloAssociado += valor;
-			valor -= getValorDaParcela();
-			mQuantidadeDeParcelasPagas++;
-
-			if(mValorExcedenteDePagamentosAnteriores != 0) {
-				if(valor + mValorExcedenteDePagamentosAnteriores >= getValorDaParcela()) {
-					mQuantidadeDeParcelasPagas++;
-					mValorExcedenteDePagamentosAnteriores -= getValorDaParcela();
+		if(!(mTaxaQuitada)) { //se não estiver quitada
+			if(valor >= (mTaxa.getValorAno() / mTaxa.getParcelas())) { //verifica se o valor e maior ou igual a uma parcela
+				if(valor <= (mTaxa.getValorAno() - mValorJaPagoPeloAssociado)) {//verifica se o valor e menor ou igual ao que falta pagar
+					mValorJaPagoPeloAssociado += valor;
+					pagamentos.add(new Pagamento(data, valor));
 				}
 			}
-			
-			if(mQuantidadeDeParcelasPagas == getParcelas()) {
-				mTaxaQuitada = true;
+			else if((mTaxa.getValorAno() - mValorJaPagoPeloAssociado) < (mTaxa.getValorAno() / mTaxa.getParcelas())) {//se o valor que falta pagar for menor que o valor de uma parcela
+				mValorJaPagoPeloAssociado += valor;
+				pagamentos.add(new Pagamento(data, valor));
 			}
+			else {
+				throw new ValorInvalido("valor do pagamento da taxa");
+			}
+		}
+		else {
+			throw new ValorInvalido("taxa ja quitada");
 		}
 	}
 	
@@ -63,12 +54,9 @@ public class ExtratoDeTaxa extends Taxa {
 		return somaPagamento;
 	}
 	
-	public ExtratoDeTaxa(String nome, int vigencia, double valorAno, int parcelas, boolean administrativa, Associacao associacao) {
-		super(nome, vigencia, valorAno, parcelas, administrativa);
-		
-		mValorTotalPagoPeloAssociado = 0;
-		mValorExcedenteDePagamentosAnteriores = 0;
-		mQuantidadeDeParcelasPagas = 0;
+	public ExtratoDeTaxa(Taxa taxa) {
+		mTaxa = taxa;
+		mValorJaPagoPeloAssociado = 0;
 		mTaxaQuitada = false;
 	}
 	
