@@ -7,7 +7,6 @@ package associacao;
 public class MinhaAssociacao implements InterfaceAssociacao {
 
 	private ArrayListDeAssociacoes associacoes = new ArrayListDeAssociacoes();
-	//private ArrayListDeTaxas taxas;
 	
 	//eu acho que nao precisaria da excecao reuniaoNaoExistente
 	public double calcularFrequencia(int codigoAssociado, int numAssociacao, long inicio, long fim)
@@ -41,10 +40,7 @@ public class MinhaAssociacao implements InterfaceAssociacao {
 		return associacao.somarPagamentoDeAssociado(numAssociado, nomeTaxa, vigencia, inicio, fim);
 	}
 
-	/*da forma que eu estou fazendo, eu acho que nao precisa de TaxaNaoExistente
-	ja que eu nao procuro uma taxa especifica, mas percorro o vetor de taxas em busca
-	dos valores das taxas existentes, caso nao tivesse nenhuma taxa, nao acho que seria
-	exatamente uma TaxaInexistente, ou seria, ja que nao tem nenhuma? */
+	//da forma que eu estou fazendo, eu acho que nao precisa de TaxaNaoExistente
 	public double calcularTotalDeTaxas(int numAssociacao, int vigencia)
 			throws AssociacaoNaoExistente, TaxaNaoExistente {
 		Associacao associacao = associacoes.buscar(numAssociacao);
@@ -67,7 +63,6 @@ public class MinhaAssociacao implements InterfaceAssociacao {
 		Associacao associacaoAux;
 		
 		associacaoAux = associacoes.buscar(associacao);
-		//assumindo que se a associacao nao existir vai dar uma excecao e o metodo para aqui, se isso nao ocorre o metodo continua
 		associacaoAux.adicionar(a);
 	}
 
@@ -75,17 +70,13 @@ public class MinhaAssociacao implements InterfaceAssociacao {
 		Associacao associacaoAux;
 		
 		associacaoAux = associacoes.buscar(associacao);
-		//assumindo que se a associacao nao existir vai dar uma excecao e o metodo para aqui, se isso nao ocorre o metodo continua
 		associacaoAux.adicionar(r);
 	}
 
-	/*nao esta, em tese, permitindo inserir uma taxa com mesmo nome mas vigencia
-	diferente, mas parece que pode haver taxa com mesmo nome e vigencias diferentes */
 	public void adicionar(int associacao, Taxa t) throws AssociacaoNaoExistente, TaxaJaExistente, ValorInvalido {
 		Associacao associacaoAux;
 		
 		associacaoAux = associacoes.buscar(associacao);
-		//assumindo que se a associacao nao existir vai dar uma excecao e o metodo para aqui, se isso nao ocorre o metodo continua
 		associacaoAux.adicionar(t);
 	}
 	

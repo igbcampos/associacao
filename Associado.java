@@ -9,7 +9,7 @@ public class Associado {
 	private String mTelefone;
 	private long mNascimento;
 	private long mDataAssociacao;
-	ArrayList<ExtratoDeTaxa> extratoDeTaxas = new ArrayList<ExtratoDeTaxa>();
+	private ArrayList<ExtratoDeTaxa> extratoDeTaxas = new ArrayList<ExtratoDeTaxa>();
 	
 	public int getNumero() {
 		return mNumero;
@@ -32,9 +32,9 @@ public class Associado {
 	}
 	
 	public double somarPagamentoDeAssociado(String nomeTaxa, int vigencia, long inicio, long fim) throws TaxaNaoExistente {
-		for(ExtratoDeTaxa taxa : extratoDeTaxas) {
-			if(taxa.getNome().equals(nomeTaxa) && taxa.getVigencia() == vigencia) {
-				return taxa.somarPagamentoDeAssociado(inicio, fim);
+		for(ExtratoDeTaxa extratoDeTaxa : extratoDeTaxas) {
+			if(extratoDeTaxa.getTaxa().getNome().equals(nomeTaxa) && extratoDeTaxa.getTaxa().getVigencia() == vigencia) {
+				return extratoDeTaxa.somarPagamentoDeAssociado(inicio, fim);
 			}
 		}
 		
@@ -62,21 +62,13 @@ public class Associado {
 	}
 	
 	public void inserirTaxaNoExtrato(Taxa taxa) {
-		Associacao associacao = taxa.getAssociacao();
-		String nome = taxa.getNome();
-		int vigencia = taxa.getVigencia();
-		double valorAno = taxa.getValorAno();
-		int parcelas = taxa.getParcelas();
-		boolean administrativa = taxa.getAdministrativa();
-		
-		extratoDeTaxas.add(new ExtratoDeTaxa(nome, vigencia, valorAno, parcelas, administrativa, associacao));
+		extratoDeTaxas.add(new ExtratoDeTaxa(taxa));
 	}
 	
 	public void registrarPagamento(String nomeTaxa, int vigencia, long data, double valor) throws ValorInvalido, TaxaNaoExistente {
-		
-		for(ExtratoDeTaxa taxa : extratoDeTaxas) {
-			if(taxa.getNome().equals(nomeTaxa) && taxa.getVigencia() == vigencia) {
-				taxa.registrarPagamento(data, valor);
+		for(ExtratoDeTaxa extratoDeTaxa : extratoDeTaxas) {
+			if(extratoDeTaxa.getTaxa().getNome().equals(nomeTaxa) && extratoDeTaxa.getTaxa().getVigencia() == vigencia) {
+				extratoDeTaxa.registrarPagamento(data, valor);
 				return;
 			}
 		}

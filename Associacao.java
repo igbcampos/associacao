@@ -57,7 +57,6 @@ public class Associacao {
 		}
 	}
 
-	//eu acho que nao precisaria da excecao reuniaoNaoExistente	
 	public double calcularFrequencia(int codigo, long inicio, long fim) throws AssociadoNaoExistente, ReuniaoNaoExistente {
 		Associado associado = associados.buscar(codigo);
 		
@@ -70,8 +69,12 @@ public class Associacao {
 		reunioes.adicionarFrequenciaAssociado(associado, dataReuniao);		
 	}
 	
-	public void registrarPagamento(String taxa, int vigencia, int numAssociado, long data, double valor) throws AssociadoNaoExistente, TaxaNaoExistente, ValorInvalido {
+	public void registrarPagamento(String taxa, int vigencia, int numAssociado, long data, double valor) throws AssociadoJaRemido, AssociadoNaoExistente, TaxaNaoExistente, ValorInvalido {
 		Associado associado = associados.buscar(numAssociado);
+		
+		if(associado instanceof AssociadoRemido && taxas.buscar(taxa, vigencia).getAdministrativa()) {//se for administrativa e o associado for remido da um throw
+			throw new AssociadoJaRemido();
+		}
 		
 		associado.registrarPagamento(taxa, vigencia, data, valor);
 	}
