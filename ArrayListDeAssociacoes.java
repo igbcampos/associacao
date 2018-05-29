@@ -7,7 +7,7 @@ public class ArrayListDeAssociacoes {
 	ArrayList<Associacao> associacoes = new ArrayList<Associacao>();
 	
 	public void validarDados(Associacao associacao) throws ValorInvalido{
-		if(associacao.getNome().length() == 0 || associacao.getNome() == null) {
+		if(associacao.getNome() == "" || associacao.getNome() == null) {
 			throw new ValorInvalido("nome de associacao");
 		}
 		if(associacao.getNumero() <= 0) {
@@ -15,7 +15,7 @@ public class ArrayListDeAssociacoes {
 		}
 	}
 	
-	public void inserir(Associacao associacao) throws ValorInvalido {
+	public void inserir(Associacao associacao) throws ValorInvalido {		
 		validarDados(associacao);
 		
 		associacoes.add(associacao);
