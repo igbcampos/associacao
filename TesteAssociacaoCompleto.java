@@ -1,4 +1,4 @@
-package associacao;
+package associacaoBD;
 
 import static org.junit.Assert.*;
 
@@ -511,11 +511,11 @@ public class TesteAssociacaoCompleto {
 
 	}
 
-	// Obs.: O mÈtodo anterior testa com um associado que n„o existe de maneira
-	// alguma, nem nesta nem em nenhuma outra associaÁ„o.
-	// J· este testa com um associado que n„o existe nesta associaÁ„o na qual
-	// tentar· registrar a frequÍncia, mas existe em outra, o que dever· gerar que o
-	// associado n„o existe da mesma forma do teste anterior.
+	// Obs.: O mÃˆtodo anterior testa com um associado que nâ€žo existe de maneira
+	// alguma, nem nesta nem em nenhuma outra associaÃ�â€žo.
+	// JÂ· este testa com um associado que nâ€žo existe nesta associaÃ�â€žo na qual
+	// tentarÂ· registrar a frequÃ�ncia, mas existe em outra, o que deverÂ· gerar que o
+	// associado nâ€žo existe da mesma forma do teste anterior.
 	@Test
 	public void frequenciaDeAssociadoNaoExistente2() throws Exception {
 		InterfaceAssociacao controle = new MinhaAssociacao();
@@ -675,7 +675,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -691,7 +691,7 @@ public class TesteAssociacaoCompleto {
 
 		try {
 			controle.registrarPagamento(1306, "Manutencao", 2018, 1, hoje.getTime(), 49);
-			fail("Nao deveria deixar pagar esse valor, pois 49 esta abaixo do valor da parcela, que deve ser o valor mÌnimo a ser pago");
+			fail("Nao deveria deixar pagar esse valor, pois 49 esta abaixo do valor da parcela, que deve ser o valor mÃŒnimo a ser pago");
 		} catch (ValorInvalido e) {
 			// Ok. Barrou pagamento abaixo da parcela!
 		}
@@ -706,7 +706,7 @@ public class TesteAssociacaoCompleto {
 
 		try {
 			controle.registrarPagamento(1306, "Manutencao", 2018, 2, hoje.getTime(), 60);
-			fail("Nao deveria deixar pagar esse valor, pois este associado È remido");
+			fail("Nao deveria deixar pagar esse valor, pois este associado Ãˆ remido");
 		} catch (AssociadoJaRemido e) {
 			// Ok. Barrou pagamento de taxa adminsitrativa!
 		}
@@ -737,7 +737,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -766,7 +766,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -795,7 +795,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -824,7 +824,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -853,7 +853,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -934,13 +934,13 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
 		controle.adicionar(1306, associado2);
 
-		Taxa taxa1 = new Taxa("ManutenÁ„o", 2018, 600, 12, true);
+		Taxa taxa1 = new Taxa("ManutenÃ�â€žo", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
 
 		Taxa taxa2 = new Taxa("Reforma", 2018, 1200, 12, false);
@@ -948,8 +948,8 @@ public class TesteAssociacaoCompleto {
 		Date hoje = new Date();
 
 		try {
-			controle.registrarPagamento(1306, "ManutenÁ„o", 2018, 1, hoje.getTime(), 49);
-			fail("N„o deveria deixar pagar esse valor, pois 49 est· abaixo do valor da parcela, que deve ser o valor mÌnimo a ser pago");
+			controle.registrarPagamento(1306, "ManutenÃ�â€žo", 2018, 1, hoje.getTime(), 49);
+			fail("Nâ€žo deveria deixar pagar esse valor, pois 49 estÂ· abaixo do valor da parcela, que deve ser o valor mÃŒnimo a ser pago");
 		} catch (ValorInvalido e) {
 			// Ok. Barrou pagamento abaixo da parcela!
 		}
@@ -970,7 +970,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1005,7 +1005,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1040,7 +1040,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1055,7 +1055,7 @@ public class TesteAssociacaoCompleto {
 
 		try {
 			controle.registrarPagamento(1306, "A", 2018, 2, hoje.getTime(), 60);
-			fail("N„o deveria deixar pagar esse valor, pois este associado È remido");
+			fail("Nâ€žo deveria deixar pagar esse valor, pois este associado Ãˆ remido");
 		} catch (AssociadoJaRemido e) {
 			// Ok. Barrou pagamento de taxa adminsitrativa!
 		}
@@ -1076,7 +1076,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1092,7 +1092,7 @@ public class TesteAssociacaoCompleto {
 		try {
 			controle.registrarPagamento(1306, "B", 2018, 2, hoje.getTime(), 100);
 		} catch (AssociadoJaRemido e) {
-			fail("N„o deveria ter barrado, pois n„o È administrativa!");
+			fail("Nâ€žo deveria ter barrado, pois nâ€žo Ãˆ administrativa!");
 		}
 
 	}
@@ -1111,7 +1111,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1144,7 +1144,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1176,7 +1176,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1197,7 +1197,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// TODO Auto-generated catch block
 			// e.printStackTrace();
-			fail("O valor È menor do que a parcela, mas deveria aceitar, uma vez que È sÛ o que falta para quitar o ano!");
+			fail("O valor Ãˆ menor do que a parcela, mas deveria aceitar, uma vez que Ãˆ sÃ› o que falta para quitar o ano!");
 		}
 
 	}
@@ -1216,7 +1216,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);

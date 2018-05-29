@@ -1,4 +1,4 @@
-package associacao;
+package associacaoBD;
 
 public class TaxaNaoExistente extends Exception {
 	

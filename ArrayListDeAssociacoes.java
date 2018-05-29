@@ -1,4 +1,4 @@
-package associacao;
+package associacaoBD;
 
 import java.util.ArrayList;
 

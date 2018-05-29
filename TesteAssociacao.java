@@ -1,4 +1,4 @@
-package associacao;
+package associacaoBD;
 
 import static org.junit.Assert.*;
 

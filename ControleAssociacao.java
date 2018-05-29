@@ -2,7 +2,7 @@
 taxa de um associado e um mes antes da sua data de remissao, caso seja remido, e o 
 ValorInvalido quando algo nao for preenchido corretamente, que eu nao sei como faz.
 */
-package associacao;
+package associacaoBD;
 
 public class ControleAssociacao implements InterfaceAssociacao {
 
