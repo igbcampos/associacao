@@ -1,4 +1,4 @@
-package associacao;
+package associacaoBD;
 
 import static org.junit.Assert.*;
 
@@ -12,6 +12,7 @@ public class TesteAssociacao {
 	@Test
 	public void testarCadastroDeAssociacao() throws AssociacaoJaExistente, ValorInvalido {
 		InterfaceAssociacao controle = new MinhaAssociacao();
+		controle.limparBanco();
 		Associacao a1 = new Associacao(1306, "");	
 		
 		//Tentativa de cadastrar com sem nome
@@ -31,11 +32,13 @@ public class TesteAssociacao {
 		} catch (AssociacaoJaExistente e) {
 			// Ok, era pra dar erro mesmo!
 		}	
+		controle.limparBanco();
 	}
 
 	@Test
 	public void testarCadastroDeAssociado() throws AssociacaoJaExistente, ValorInvalido, AssociacaoNaoExistente, AssociadoJaExistente {
 		InterfaceAssociacao controle = new MinhaAssociacao();
+		controle.limparBanco();
 		Associacao a1 = new Associacao(1306, "Cruzeiro do Sul V");	
 		controle.adicionar(a1);
 		GregorianCalendar gc = new GregorianCalendar();
@@ -50,6 +53,7 @@ public class TesteAssociacao {
 		} catch (AssociadoJaExistente e) {
           // Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 	
 	@Test
@@ -69,11 +73,13 @@ public class TesteAssociacao {
 		} catch (ReuniaoJaExistente e) {
           // Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 	
 	@Test
 	public void testarCadastroDeTaxa() throws AssociacaoNaoExistente, AssociacaoJaExistente, ValorInvalido, TaxaJaExistente {
 		InterfaceAssociacao controle = new MinhaAssociacao();
+		controle.limparBanco();
 		Associacao a1 = new Associacao(1306, "Cruzeiro do Sul V");	
 		controle.adicionar(a1);
 		Taxa taxa1 = new Taxa("Manutencao", 2018, 600, 12, true);
@@ -84,11 +90,13 @@ public class TesteAssociacao {
 		} catch (TaxaJaExistente e) {
           // Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
 	public void testarCalculoDeFrequencia() throws Exception {
 		InterfaceAssociacao controle = new MinhaAssociacao();
+		controle.limparBanco();
 		Associacao a1 = new Associacao(1306, "Cruzeiro do Sul V");	
 		controle.adicionar(a1);
 		
@@ -109,11 +117,13 @@ public class TesteAssociacao {
 		
 		double freq = controle.calcularFrequencia(1, 1306, data1, data1+1000000);
 		assertEquals(0.5, freq, 0.01);
+		controle.limparBanco();
 	}
 
 	@Test
 	public void testarPagamento() throws AssociacaoNaoExistente, AssociadoNaoExistente, TaxaNaoExistente, AssociacaoJaExistente, ValorInvalido, AssociadoJaExistente, TaxaJaExistente, AssociadoJaRemido {
 		InterfaceAssociacao controle = new MinhaAssociacao();
+		controle.limparBanco();
 		Associacao a1 = new Associacao(1306, "Cruzeiro do Sul V");	
 		controle.adicionar(a1);
 		
@@ -171,5 +181,6 @@ public class TesteAssociacao {
 		controle.registrarPagamento(1306, "Reforma", 2018, 2, hoje.getTime(), 20);
 		valor2 = controle.somarPagamentoDeAssociado(1306, 2, "Reforma", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(1200, valor2, 0.01);
+		controle.limparBanco();
    }
 }
