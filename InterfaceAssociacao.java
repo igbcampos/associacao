@@ -1,4 +1,4 @@
-package associacao;
+package associacaoBD;
 
 public interface InterfaceAssociacao {
 
@@ -44,4 +44,6 @@ public interface InterfaceAssociacao {
 
 	// Adiciona uma taxa a uma associação.
 	public void adicionar(int associacao, Taxa t) throws AssociacaoNaoExistente, TaxaJaExistente, ValorInvalido;
+
+	public void limparBanco();
 }

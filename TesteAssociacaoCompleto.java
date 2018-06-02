@@ -1,4 +1,4 @@
-package associacao;
+package associacaoBD;
 
 import static org.junit.Assert.*;
 
@@ -23,6 +23,7 @@ public class TesteAssociacaoCompleto {
 		} catch (AssociacaoJaExistente e) {
 			// Ok, era pra dar erro mesmo!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -37,6 +38,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok. Era pra dar erro mesmo!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -51,6 +53,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok. Era pra dar erro mesmo!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -65,6 +68,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok. Era pra dar erro mesmo!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -86,6 +90,7 @@ public class TesteAssociacaoCompleto {
 		} catch (AssociadoJaExistente e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -106,6 +111,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -126,6 +132,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -146,6 +153,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -166,6 +174,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -186,6 +195,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -206,6 +216,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -226,6 +237,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -246,7 +258,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok erro cadastro de associado em associacao inexistente!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -267,6 +279,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ReuniaoJaExistente e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -287,6 +300,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -307,6 +321,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -326,6 +341,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -345,7 +361,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok erro reuniao sem associacao!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -362,6 +378,7 @@ public class TesteAssociacaoCompleto {
 		} catch (TaxaJaExistente e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -378,6 +395,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -394,6 +412,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -410,6 +429,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -426,6 +446,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -442,6 +463,7 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// Ok, era pra ter dado erro!
 		}
+		controle.limparBanco();
 	}
 
 	@Test
@@ -457,7 +479,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok erro taxa sem associacao");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -483,6 +505,7 @@ public class TesteAssociacaoCompleto {
 
 		double freq = controle.calcularFrequencia(1, 1306, data1, data1 + 1000000);
 		assertEquals(0.5, freq, 0.01);
+		controle.limparBanco();
 	}
 
 	@Test
@@ -508,14 +531,14 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok erro frequencia de associado que nao existe!");
 		}
-
+		controle.limparBanco();
 	}
 
-	// Obs.: O mÈtodo anterior testa com um associado que n„o existe de maneira
-	// alguma, nem nesta nem em nenhuma outra associaÁ„o.
-	// J· este testa com um associado que n„o existe nesta associaÁ„o na qual
-	// tentar· registrar a frequÍncia, mas existe em outra, o que dever· gerar que o
-	// associado n„o existe da mesma forma do teste anterior.
+	// Obs.: O mÃˆtodo anterior testa com um associado que nâ€žo existe de maneira
+	// alguma, nem nesta nem em nenhuma outra associaÃ�â€žo.
+	// JÂ· este testa com um associado que nâ€žo existe nesta associaÃ�â€žo na qual
+	// tentarÂ· registrar a frequÃ�ncia, mas existe em outra, o que deverÂ· gerar que o
+	// associado nâ€žo existe da mesma forma do teste anterior.
 	@Test
 	public void frequenciaDeAssociadoNaoExistente2() throws Exception {
 		InterfaceAssociacao controle = new MinhaAssociacao();
@@ -543,7 +566,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok erro frequencia de associado que nao existe nesta associacao!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -571,7 +594,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok erro frequencia de associacao que nao existe!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -599,7 +622,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok erro frequencia de reuniao nao existente!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -616,7 +639,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		Reuniao reuniao1 = new Reuniao(data1, "Aumento de taxas");
+		Reuniao reuniao1 = new Reuniao(data1 - 10000, "Aumento de taxas");
 		controle.adicionar(1306, reuniao1);
 
 		try {
@@ -627,7 +650,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok frequencia incompativel!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -657,7 +680,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok frequencia ja registrada!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -675,7 +698,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -691,7 +714,7 @@ public class TesteAssociacaoCompleto {
 
 		try {
 			controle.registrarPagamento(1306, "Manutencao", 2018, 1, hoje.getTime(), 49);
-			fail("Nao deveria deixar pagar esse valor, pois 49 esta abaixo do valor da parcela, que deve ser o valor mÌnimo a ser pago");
+			fail("Nao deveria deixar pagar esse valor, pois 49 esta abaixo do valor da parcela, que deve ser o valor mÃŒnimo a ser pago");
 		} catch (ValorInvalido e) {
 			// Ok. Barrou pagamento abaixo da parcela!
 		}
@@ -706,7 +729,7 @@ public class TesteAssociacaoCompleto {
 
 		try {
 			controle.registrarPagamento(1306, "Manutencao", 2018, 2, hoje.getTime(), 60);
-			fail("Nao deveria deixar pagar esse valor, pois este associado È remido");
+			fail("Nao deveria deixar pagar esse valor, pois este associado Ãˆ remido");
 		} catch (AssociadoJaRemido e) {
 			// Ok. Barrou pagamento de taxa adminsitrativa!
 		}
@@ -722,6 +745,7 @@ public class TesteAssociacaoCompleto {
 		controle.registrarPagamento(1306, "Reforma", 2018, 2, hoje.getTime(), 20);
 		valor2 = controle.somarPagamentoDeAssociado(1306, 2, "Reforma", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(1200, valor2, 0.01);
+		controle.limparBanco();
 	}
 
 	@Test
@@ -737,7 +761,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -750,7 +774,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok pagamento de associacao nao existente!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -766,7 +790,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -779,7 +803,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok pagamento de associado nao existente!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -795,7 +819,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -808,7 +832,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok pagamento de taxa nao existente!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -824,7 +848,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -837,7 +861,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok calculofrequencia de associado nao existente!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -853,7 +877,7 @@ public class TesteAssociacaoCompleto {
 		long data1 = gc.getTimeInMillis();
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
-		// Remiss√£o em 01/03/2018
+		// RemissâˆšÂ£o em 01/03/2018
 		gc.set(2018, 02, 01);
 		Taxa taxa1 = new Taxa("A", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
@@ -866,7 +890,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok calculo frequencia de associacao nao existente!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -879,6 +903,7 @@ public class TesteAssociacaoCompleto {
 		controle.adicionar(1306, taxa1);
 		controle.adicionar(1306, taxa2);
 		assertEquals(700, controle.calcularTotalDeTaxas(1306, 2018), 0.001);
+		controle.limparBanco();
 	}
 
 	@Test
@@ -894,6 +919,7 @@ public class TesteAssociacaoCompleto {
 		controle.adicionar(1306, taxa2);
 		controle.adicionar(1306, taxa3);
 		assertEquals(700, controle.calcularTotalDeTaxas(1306, 2018), 0.001);
+		controle.limparBanco();
 	}
 
 	@Test
@@ -917,7 +943,7 @@ public class TesteAssociacaoCompleto {
 			// e.printStackTrace();
 			System.out.println("Ok erro calculo total de taxa de associacao nao existente!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -934,13 +960,13 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
 		controle.adicionar(1306, associado2);
 
-		Taxa taxa1 = new Taxa("ManutenÁ„o", 2018, 600, 12, true);
+		Taxa taxa1 = new Taxa("ManutenÃ�â€žo", 2018, 600, 12, true);
 		controle.adicionar(1306, taxa1);
 
 		Taxa taxa2 = new Taxa("Reforma", 2018, 1200, 12, false);
@@ -948,12 +974,12 @@ public class TesteAssociacaoCompleto {
 		Date hoje = new Date();
 
 		try {
-			controle.registrarPagamento(1306, "ManutenÁ„o", 2018, 1, hoje.getTime(), 49);
-			fail("N„o deveria deixar pagar esse valor, pois 49 est· abaixo do valor da parcela, que deve ser o valor mÌnimo a ser pago");
+			controle.registrarPagamento(1306, "ManutenÃ�â€žo", 2018, 1, hoje.getTime(), 49);
+			fail("Nâ€žo deveria deixar pagar esse valor, pois 49 estÂ· abaixo do valor da parcela, que deve ser o valor mÃŒnimo a ser pago");
 		} catch (ValorInvalido e) {
 			// Ok. Barrou pagamento abaixo da parcela!
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -970,7 +996,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -988,7 +1014,7 @@ public class TesteAssociacaoCompleto {
 
 		double valor = controle.somarPagamentoDeAssociado(1306, 1, "A", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(60, valor, 0.01);
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -1005,7 +1031,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1023,7 +1049,7 @@ public class TesteAssociacaoCompleto {
 
 		double valor = controle.somarPagamentoDeAssociado(1306, 1, "B", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(100, valor, 0.01);
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -1040,7 +1066,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1055,11 +1081,11 @@ public class TesteAssociacaoCompleto {
 
 		try {
 			controle.registrarPagamento(1306, "A", 2018, 2, hoje.getTime(), 60);
-			fail("N„o deveria deixar pagar esse valor, pois este associado È remido");
+			fail("Nâ€žo deveria deixar pagar esse valor, pois este associado Ãˆ remido");
 		} catch (AssociadoJaRemido e) {
 			// Ok. Barrou pagamento de taxa adminsitrativa!
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -1076,7 +1102,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1092,9 +1118,9 @@ public class TesteAssociacaoCompleto {
 		try {
 			controle.registrarPagamento(1306, "B", 2018, 2, hoje.getTime(), 100);
 		} catch (AssociadoJaRemido e) {
-			fail("N„o deveria ter barrado, pois n„o È administrativa!");
+			fail("Nâ€žo deveria ter barrado, pois nâ€žo Ãˆ administrativa!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -1111,7 +1137,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1127,7 +1153,7 @@ public class TesteAssociacaoCompleto {
 		controle.registrarPagamento(1306, "B", 2018, 2, hoje.getTime(), 100);
 		double valor = controle.somarPagamentoDeAssociado(1306, 2, "A", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(0, valor, 0.01);
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -1144,7 +1170,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1160,6 +1186,7 @@ public class TesteAssociacaoCompleto {
 		controle.registrarPagamento(1306, "B", 2018, 2, hoje.getTime(), 100);
 		double valor = controle.somarPagamentoDeAssociado(1306, 2, "B", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(100, valor, 0.01);
+		controle.limparBanco();
 	}
 
 	@Test
@@ -1176,7 +1203,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1197,9 +1224,9 @@ public class TesteAssociacaoCompleto {
 		} catch (ValorInvalido e) {
 			// TODO Auto-generated catch block
 			// e.printStackTrace();
-			fail("O valor È menor do que a parcela, mas deveria aceitar, uma vez que È sÛ o que falta para quitar o ano!");
+			fail("O valor Ãˆ menor do que a parcela, mas deveria aceitar, uma vez que Ãˆ sÃ› o que falta para quitar o ano!");
 		}
-
+		controle.limparBanco();
 	}
 
 	@Test
@@ -1216,7 +1243,7 @@ public class TesteAssociacaoCompleto {
 		Associado associado1 = new Associado(1, "Pedro", "3232-3232", data1, nasc);
 		controle.adicionar(1306, associado1);
 
-		// Remiss„o em 01/03/2018
+		// Remissâ€žo em 01/03/2018
 		gc.set(2018, 02, 01);
 		long remissao = gc.getTimeInMillis();
 		Associado associado2 = new AssociadoRemido(2, "Raimundo", "3232-3232", data1, nasc, remissao);
@@ -1234,6 +1261,7 @@ public class TesteAssociacaoCompleto {
 		controle.registrarPagamento(1306, "B", 2018, 2, hoje.getTime(), 20);
 		double valor = controle.somarPagamentoDeAssociado(1306, 2, "B", 2018, hoje.getTime(), hoje.getTime());
 		assertEquals(1200, valor, 0.01);
+		controle.limparBanco();
 	}
 
 }

@@ -1,18 +1,13 @@
-package associacao;
+package associacaoBD;
 
 public class Taxa {
 
-	private Associacao mAssociacao;
 	private String mNome;
 	private int mVigencia;
 	private double mValorAno;
 	private int mParcelas;
 	private boolean mAdministrativa;
 		
-	public Associacao getAssociacao() {
-		return mAssociacao;
-	}
-	
 	public String getNome() {
 		return mNome;
 	}
@@ -35,10 +30,6 @@ public class Taxa {
 	
 	public double getValorDaParcela() {
 		return mValorAno / mParcelas;
-	}
-	
-	public void setAssociacao(Associacao associacao) {
-		mAssociacao = associacao;
 	}
 	
 	public void setNome(String nome) {

@@ -1,16 +1,9 @@
-package associacao;
-
-import java.util.ArrayList;
+package associacaoBD;
 
 public class Reuniao {
 
-	ArrayList<Associado> frequencia = new ArrayList<Associado>();
 	private String mAta;
 	private long mData;
-	
-	public ArrayList<Associado> getFrequencia() {
-		return frequencia;
-	}
 	
 	public String getAta() {
 		return mAta;
@@ -28,41 +21,9 @@ public class Reuniao {
 		mData = data;
 	}
 	
-	public void adicionarFrequenciaAssociado(Associado associado) throws FrequenciaJaRegistrada {
-		if(!(associadoPresente(associado.getNumero()))) {
-			frequencia.add(associado);
-		}
-		else {
-			throw new FrequenciaJaRegistrada();
-		}
-	}
-	
-	public boolean associadoPresente(int numero) {
-		for(Associado associado : frequencia) {
-			if(associado.getNumero() == numero) {
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
 	public Reuniao(long data, String ata) {
 		mAta = ata;
 		mData = data;
 	}
-	
-	//pode ser que precise dar um throw de associado nao encontrado, mas nao tenho certeza
-	//talvez um return null baste, ja que ele quer saber so usuaria estava presente, assim
-	//se o metodo retornar null significa que nao estava
-	/*public Associado buscar(int numero) { 
-		for(Associado associado : frequencia) {
-			if(associado.getNumero() == numero) {
-				return associado;
-			}
-		}
-		
-		return null;
-	}*/
 	
 }
