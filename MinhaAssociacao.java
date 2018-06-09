@@ -7,7 +7,7 @@ public class MinhaAssociacao implements InterfaceAssociacao {
 	
 	//eu acho que nao precisaria da excecao reuniaoNaoExistente
 	public double calcularFrequencia(int codigoAssociado, int numAssociacao, long inicio, long fim)
-			throws AssociadoNaoExistente, ReuniaoNaoExistente, AssociacaoNaoExistente {
+			throws AssociadoNaoExistente, AssociacaoNaoExistente {
 		DAOAssociacao daoAssociacao = new DAOAssociacao();
 		DAOAssociado daoAssociado = new DAOAssociado();
 		DAOReuniao daoReuniao = new DAOReuniao();
@@ -71,7 +71,7 @@ public class MinhaAssociacao implements InterfaceAssociacao {
 
 	//da forma que eu estou fazendo, eu acho que nao precisa de TaxaNaoExistente
 	public double calcularTotalDeTaxas(int numAssociacao, int vigencia)
-			throws AssociacaoNaoExistente, TaxaNaoExistente {
+			throws AssociacaoNaoExistente {
 		DAOAssociacao daoAssociacao = new DAOAssociacao();
 		DAOTaxa daoTaxa = new DAOTaxa();
 		daoAssociacao.buscar(numAssociacao);

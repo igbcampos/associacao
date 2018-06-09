@@ -20,7 +20,7 @@ public class Conexao {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				for(int i = 0; i < 10; i++) {
-					conexoes[i] = DriverManager.getConnection("jdbc:mysql://localhost/associacoes", "root", "1234");
+					conexoes[i] = DriverManager.getConnection("jdbc:mysql://localhost/associacao", "root", "1234");
 				}
 			}
 			catch(Exception e) {

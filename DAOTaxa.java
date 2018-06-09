@@ -54,7 +54,7 @@ public class DAOTaxa {
 		return taxa;
 	}
 	
-	public double calcularTotalDeTaxas(int numeroAssociacao, int vigencia) throws TaxaNaoExistente {
+	public double calcularTotalDeTaxas(int numeroAssociacao, int vigencia) {
 		double totalDeTaxas = 0;
 
 		try {

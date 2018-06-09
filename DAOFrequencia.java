@@ -34,10 +34,7 @@ public class DAOFrequencia {
 			}
 			statement.close();
 		}
-		catch(FrequenciaJaRegistrada e) {
-			throw new FrequenciaJaRegistrada();
-		}
-		catch(Exception e) {
+		catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}

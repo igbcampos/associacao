@@ -6,7 +6,7 @@ public interface InterfaceAssociacao {
 	// determinado período, retornando um número entre 0 e 1 (ex: 0,6, indicando que
 	// o associado participou de 60% das reuniões.
 	public double calcularFrequencia(int codigoAssociado, int numAssociacao, long inicio, long fim)
-			throws AssociadoNaoExistente, ReuniaoNaoExistente, AssociacaoNaoExistente;
+			throws AssociadoNaoExistente, AssociacaoNaoExistente;
 
 	// Registra a frequência de um associado em uma reunião. Não deveria registrar participação em reuniões
 	// acontecidas antes da sua filiação na associação.
@@ -30,7 +30,7 @@ public interface InterfaceAssociacao {
 			long inicio, long fim) throws AssociacaoNaoExistente, AssociadoNaoExistente, TaxaNaoExistente;
 
 	// Calcula o total de taxas previstas para um dado ano, em uma associação.
-	public double calcularTotalDeTaxas(int numAssociacao, int vigencia) throws AssociacaoNaoExistente, TaxaNaoExistente;
+	public double calcularTotalDeTaxas(int numAssociacao, int vigencia) throws AssociacaoNaoExistente;
 
 	// Adiciona uma associação a ser gerenciada.
 	public void adicionar(Associacao a) throws AssociacaoJaExistente, ValorInvalido;
@@ -45,5 +45,6 @@ public interface InterfaceAssociacao {
 	// Adiciona uma taxa a uma associação.
 	public void adicionar(int associacao, Taxa t) throws AssociacaoNaoExistente, TaxaJaExistente, ValorInvalido;
 
+	// Esvazia as tabelas do banco para permitir a execução dos testes.
 	public void limparBanco();
 }
