@@ -1,8 +1,9 @@
-package associacaoBD;
+package botAssociacao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DAOReuniao {
 
@@ -49,6 +50,7 @@ public class DAOReuniao {
 		return reuniao;
 	}
 	
+	//eu não estou vendo onde estou usando o numeroAssociado, mas não vou tirar, vai que.
 	public int quantidadeDeReunioes(int numeroAssociacao, int numeroAssociado, long inicio, long fim) {
 		int reunioes = 0;
 		
@@ -65,6 +67,31 @@ public class DAOReuniao {
 				if(data >= inicio && data <= fim) {
 					reunioes++;
 				}
+			}
+			statement.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return reunioes;
+	}
+	
+	//usado no bot para ter acesso a todas as reunioes de uma associacao
+	public ArrayList<Long> reunioesExistentes(int associacao, long inicio, long fim) {
+		ArrayList<Long> reunioes = new ArrayList<Long>();
+		
+		try {
+			Connection conexao = Conexao.getConexao();
+			Statement statement = conexao.createStatement();
+			
+			String comando = "select * from reuniao where associacao = " + associacao 
+					+ " and data >= " + inicio + " and data <= " + fim;
+			ResultSet rs = statement.executeQuery(comando);
+			
+			while(rs.next()) {
+				long data = rs.getLong("data");
+				reunioes.add(data);
 			}
 			statement.close();
 		}

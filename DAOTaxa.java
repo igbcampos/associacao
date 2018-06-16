@@ -1,8 +1,9 @@
-package associacaoBD;
+package botAssociacao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DAOTaxa {
 
@@ -70,12 +71,42 @@ public class DAOTaxa {
 				double valorAno = rs.getInt("valor");
 				totalDeTaxas += valorAno;
 			}
+			statement.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 
 		return totalDeTaxas;
+	}
+	
+	//usado no bot para ter acesso a todas as taxas de uma associacao
+	public ArrayList<Taxa> taxasExistentes(int associacao, int vigencia) {
+		ArrayList<Taxa> taxas = new ArrayList<Taxa>();
+		
+		try {
+			Connection conexao = Conexao.getConexao();
+			Statement statement = conexao.createStatement();
+			
+			String comando = "select * from taxa where associacao = " + associacao + " and vigencia = " + vigencia;
+			ResultSet rs = statement.executeQuery(comando);
+			
+			while(rs.next()) {
+				String nome = rs.getString("nome");
+				double valor = rs.getDouble("valor");
+				int parcelas = rs.getInt("parcelas");
+				boolean administrativa = rs.getBoolean("administrativa");
+				
+				Taxa taxa = new Taxa(nome, vigencia, valor, parcelas, administrativa);
+				taxas.add(taxa);
+			}
+			statement.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return taxas;
 	}
 	
 	public void limpar() {

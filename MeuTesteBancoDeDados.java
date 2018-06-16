@@ -1,4 +1,4 @@
-package associacaoBD;
+package botAssociacao;
 
 import static org.junit.Assert.*;
 
@@ -222,6 +222,33 @@ public class MeuTesteBancoDeDados {
 		controle.adicionar(3113, t2);
 		double totalDeTaxas = controle.calcularTotalDeTaxas(3113, 2018);
 		assertEquals(1200, totalDeTaxas, 0.001);
+		
+		controle.limparBanco();
+	}
+	
+	@Test
+	public void testarAssociadoRemido() throws AssociacaoNaoExistente, AssociadoJaExistente, ValorInvalido, TaxaJaExistente, AssociadoNaoExistente, TaxaNaoExistente, AssociacaoJaExistente {
+		InterfaceAssociacao controle = new MinhaAssociacao();
+		Associacao a1 = new Associacao(3113, "Partido dos Trabalhadores");
+		
+		GregorianCalendar gc = new GregorianCalendar();
+		gc.set(1974, 10, 14);
+		long nascimento = gc.getTimeInMillis();
+		Date hoje = new Date();
+		AssociadoRemido as1 = new AssociadoRemido(1234, "caiosafado", "666666666", hoje.getTime(), nascimento, hoje.getTime()+100000);
+		Taxa t2 = new Taxa("Pao com mortadela", 2018, 200.00, 2, true);
+		
+		controle.adicionar(a1);
+		controle.adicionar(3113, as1);
+		controle.adicionar(3113, t2);
+		
+		try {
+			controle.registrarPagamento(3113, "Pao com mortadela", 2018, 1234, hoje.getTime()+ 100000000, 200.00);
+			fail("malditoooooooooooooo");
+		}
+		catch(AssociadoJaRemido e) {
+			
+		}
 		
 		controle.limparBanco();
 	}

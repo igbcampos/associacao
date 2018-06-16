@@ -1,15 +1,21 @@
-package associacaoBD;
+package botAssociacao;
 
 public class Associado {
 
 	private int mNumero;
+	private long mTelegramId;
 	private String mNome;
 	private String mTelefone;
 	private long mNascimento;
 	private long mDataAssociacao;
+	private int mAssociacao;
 	
 	public int getNumero() {
 		return mNumero;
+	}
+	
+	public long getTelegramId() {
+		return mTelegramId;
 	}
 	
 	public String getNome() {
@@ -28,8 +34,16 @@ public class Associado {
 		return mDataAssociacao;
 	}
 	
+	public int getAssociacao() {
+		return mAssociacao;
+	}
+	
 	public void setNumero(int numero) {
 		mNumero = numero;
+	}
+	
+	public void setTelegramId(long telegramId) {
+		mTelegramId = telegramId;
 	}
 	
 	public void setNome(String nome) {
@@ -48,8 +62,13 @@ public class Associado {
 		mDataAssociacao = dataAssociacao;
 	}
 	
+	public void setAssociacao(int associacao) {
+		mAssociacao = associacao;
+	}
+	
 	public Associado(int numero, String nome, String telefone, long dataAssociacao, long nascimento) {
 		mNumero = numero;
+		mTelegramId = -1;
 		mNome = nome;
 		mTelefone = telefone;
 		mDataAssociacao = dataAssociacao;

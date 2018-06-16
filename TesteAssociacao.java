@@ -1,4 +1,4 @@
-package associacaoBD;
+package botAssociacao;
 
 import static org.junit.Assert.*;
 

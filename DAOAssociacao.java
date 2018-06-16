@@ -1,4 +1,4 @@
-package associacaoBD;
+package botAssociacao;
 
 import java.sql.*;
 

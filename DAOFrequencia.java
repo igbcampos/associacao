@@ -1,6 +1,7 @@
-package associacaoBD;
+package botAssociacao;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DAOFrequencia {
 
@@ -56,6 +57,31 @@ public class DAOFrequencia {
 				if(data >= inicio && data <= fim) {
 					presencas++;
 				}
+			}
+			statement.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return presencas;
+	}
+	
+	//usado no bot para ter acesso a todas as presencas de um associado
+	public ArrayList<Long> frequenciasRegistradas(int associado, int associacao, long inicio, long fim) {
+		ArrayList<Long> presencas = new ArrayList<Long>();
+			
+		try {
+			Connection conexao = Conexao.getConexao();
+			Statement statement = conexao.createStatement();
+			
+			String comando = "select * from frequencia where associado = " + associado 
+					+ " and associacao = " + associacao + " and data >= " + inicio + " and data <= " + fim;
+			ResultSet rs = statement.executeQuery(comando);
+			
+			while(rs.next()) {
+				long data = rs.getLong("data");
+				presencas.add(data);
 			}
 			statement.close();
 		}

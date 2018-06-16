@@ -1,7 +1,7 @@
 /* No momento, o que eu lembro que falta é: verificar se a data do ultimo pagamento de
 taxa de um associado e um mes antes da sua data de remissao, caso seja remido.
 */
-package associacaoBD;
+package botAssociacao;
 
 public class MinhaAssociacao implements InterfaceAssociacao {
 	

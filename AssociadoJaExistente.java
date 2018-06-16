@@ -1,4 +1,4 @@
-package associacaoBD;
+package botAssociacao;
 
 public class AssociadoJaExistente extends Exception {
 	
