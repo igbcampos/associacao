@@ -1,6 +1,7 @@
-package associacaoBD;
+package botAssociacao;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DAOPagamento {
 	
@@ -21,6 +22,7 @@ public class DAOPagamento {
 		}
 	}
 
+	//Soma os pagamentos do associado para uma determinada taxa, usando no método registrar pagamento logo abaixo
 	public double somarPagamentos(int associacao, int associado, String nome, int vigencia) {
 		double total = 0;
 		
@@ -76,6 +78,7 @@ public class DAOPagamento {
 		}
 	}
 	
+	//método que retorna o total já pago pelo associado
 	public double somarPagamentoDeAssociado(int associacao, int associado, String nome, int vigencia, long inicio, long fim) {
 		double total = 0;
 		
@@ -103,6 +106,36 @@ public class DAOPagamento {
 		}
 		
 		return total;
+	}
+	
+	//metodo para exibir pagamentos ja realizados no bot
+	public ArrayList<Pagamento> pagamentosRealizados(int associacao, int associado, int vigencia) {
+		ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
+		
+		try {
+			Connection conexao = Conexao.getConexao();
+			Statement statement = conexao.createStatement();
+			
+			String comando = "select * from pagamento where associacao = " + associacao
+					+ " and associado = " + associado + " and vigencia = " + vigencia;
+			System.out.println(comando);
+			ResultSet rs = statement.executeQuery(comando);
+			
+			while(rs.next()) {
+				long data = rs.getLong("data");
+				double valor = rs.getInt("valor");
+				String taxa = rs.getString("nome");
+				
+				Pagamento pagamento = new Pagamento(data, valor, taxa, vigencia);
+				pagamentos.add(pagamento);
+			}
+			statement.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return pagamentos;
 	}
 	
 	public void limpar() {
